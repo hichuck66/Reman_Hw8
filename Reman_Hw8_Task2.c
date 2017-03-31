@@ -61,7 +61,7 @@ char GetOptions(char * argv[])
 	}
 	else
 	{
-		return -1;
+		return 'p';
 	}
 }
 void PrintOptions(char option)
