@@ -79,15 +79,15 @@ char GetOptions(char * argv[])
 }
 void PrintOptions(char option)
 {
-	int eof = 0;
-	while(eof != 1)
+	while(getchar() != EOF)
 	{
 		char line[100];
-		scanf("%s", line);
+		fgets(line, 100, stdin);
 		switch(option)
 		{
 			case 'p':
-				printf("%s\n", line);
+				printf("%s", line);
+				printf("\n");
 				break;
 			case 'u':
 				for(int i = 0; i < strlen(line); i++)
