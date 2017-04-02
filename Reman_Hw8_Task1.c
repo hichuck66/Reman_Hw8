@@ -18,7 +18,7 @@
 /* Function Prototypes */
 
 void Usage (char *argv[]);
-char StringIn (char *Str1[], char *Str2[]);
+char* StringIn (const char Str1[], const char Str2[]);
 
 /* Main Program */
 int main(int argc, char *argv[])
@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 		Usage(argv);
 		exit(0);
 	}
-	StringIn(Address);
+	StringIn (argv[1], argv[2]);
 
 	return 0;
 }
@@ -37,17 +37,39 @@ int main(int argc, char *argv[])
 
 void Usage (char *argv[])
 {
-	printf("help info or missing required parameters\n");
+	printf("\n help info\n or missing required parameters\n");
 	printf("Usage: ./task1 <str1> <str2>\n");
-	printf("Program checks if str2 is part of str1\n");
+	printf("Program checks if str2 is part of str1\n\n");
 
 	return;
 }
-char StringIn (char Str1[], char Str2[]);
+char* StringIn (const char Str1[], const char Str2[])
 {
-	c = strncmp
 
+	//get string lengths
+	int L1 = strlen (Str1);
+	int L2 = strlen (Str2);
+
+	//comparre the two strings up to the number of character of L2)
+	char response;
+	response  = strncmp (Str1, Str2, L2);
+
+	//loop over str1
+	for (int i = 0; i < Str1[i]; i++)
+	{
+		if (Str2[i] != Str1[i])
+		{
+			return NULL;
+		}
+		if (response == L1)
+		{
+			printf("%d characters of [%s] are in [%s]\n", L2, Str2, Str1);
+		}
+	}
+	return (char*)Str1;
 }
+
+
 
 
 
