@@ -66,8 +66,7 @@ char GetOptions(char * argv[])
 }
 void PrintOptions(char option)
 {
-	int eof = 0;
-	while(eof != 1)
+	while(getchar() != EOF)
 	{
 		char line[100];
 		scanf("%s", line);
