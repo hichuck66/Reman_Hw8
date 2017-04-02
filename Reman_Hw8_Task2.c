@@ -49,18 +49,31 @@ char GetOptions(char * argv[])
 {
 	if(strcmp(argv[1], "-p") == 0)
 	{
+		printf("Selecting option p!\n");
+		printf("Type input, output will be based on selected option!\n");
+		printf("Enter Ctrl-D to stop input!\n");
 		return 'p';
 	}
 	else if(strcmp(argv[1], "-u") == 0)
 	{
+		printf("Selecting option u!\n");
+		printf("Type input, output will be based on selected option!\n");
+		printf("Enter Ctrl-D to stop input!\n");
 		return 'u';
 	}
 	else if(strcmp(argv[1], "-l") == 0)
 	{
+		printf("Selecting option l!\n");
+		printf("Type input, output will be based on selected option!\n");
+		printf("Enter Ctrl-D to stop input!\n");
 		return 'l';
 	}
 	else
 	{
+		printf("An invalid option was selected, defaulting to selection -p!\n");
+		printf("Selecting option p!\n");
+		printf("Type input, output will be based on selected option!\n");
+		printf("Enter Ctrl-D to stop input!\n");
 		return 'p';
 	}
 }
@@ -69,23 +82,24 @@ void PrintOptions(char option)
 	while(getchar() != EOF)
 	{
 		char line[100];
-		scanf("%s", line);
+		fgets(line, 100, stdin);
 		switch(option)
 		{
 			case 'p':
-				printf("%s\n", line);
+				printf("%s", line);
+				printf("\n");
 				break;
 			case 'u':
 				for(int i = 0; i < strlen(line); i++)
 				{
-				printf("%c", toupper(line[i]));
+					printf("%c", toupper(line[i]));
 				}
 				printf("\n");
 				break;
 			case 'l':
 				for(int i = 0; i < strlen(line); i++)
 				{
-				printf("%c", tolower(line[i]));
+					printf("%c", tolower(line[i]));
 				}
 				printf("\n");
 				break;
