@@ -18,17 +18,31 @@
 /* Function Prototypes */
 
 void Usage (char *argv[]);
-char* StringIn (const char Str1[], const char Str2[]);
+char* StringIn (char *str1, char *str2);
 
 /* Main Program */
 int main(int argc, char *argv[])
-{ 
-	if (argc != 3 || strcmp(argv[2],"--help")) //check for 2 and only 2 parameters
+{
+	//check for 2 and only 2 parameters
+	if (argc != 3 || argc < 1)
 	{
 		Usage(argv);
 		exit(0);
 	}
-	StringIn (argv[1], argv[2]);
+//	else if (strcmp(argv[1], "--help"))
+//	{
+//		Usage(argv);
+//		exit(0);
+//	}
+
+	char *str1 = argv[1];
+	char *str2 = argv[2];
+
+	strcpy(str1, argv[1]);
+	strcpy(str2, argv[2]);
+
+//call the function
+	StringIn (str1, str2);
 
 	return 0;
 }
@@ -43,35 +57,39 @@ void Usage (char *argv[])
 
 	return;
 }
-char* StringIn (const char Str1[], const char Str2[])
+
+char* StringIn (char *str1, char *str2)
 {
 
-	//get string lengths
-	int L1 = strlen (Str1);
-	int L2 = strlen (Str2);
+	//L2 is the number of characters we a comparing
+	int L2 = strlen(str2);
 
-	//comparre the two strings up to the number of character of L2)
-	char response;
-	response  = strncmp (Str1, Str2, L2);
+	char res;
+	res = strncmp (str1, str2, L2);
 
-	//loop over str1
-	for (int i = 0; i < Str1[i]; i++)
+	//loop over string1
+	int i = 0;
+	for (i = str1[i]; i != EOF && i != '\0'; i++)
 	{
-		if (Str2[i] != Str1[i])
+		if (res == 0)
 		{
+			printf("\n The %d characters [%s] are found in [%s]\n\n",L2, str2, str1);
+			break;
+		}
+
+		else if (str2[i] != str1[i])
+		{
+			printf("\n The %d characters [%s] not found in [%s]\n", L2, str2, str1);
+			printf("returned string is <NULL>\n\n");
 			return NULL;
 		}
-		if (response == L1)
+
+		else
 		{
-			printf("%d characters of [%s] are in [%s]\n", L2, Str2, Str1);
+			break;
 		}
 	}
-	return (char*)Str1;
+	return (char*)str1;
 }
-
-
-
-
-
 
 
